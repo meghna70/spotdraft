@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL; 
+
 export const fetchComments = createAsyncThunk(
   'comments/fetchComments',
   async (fileId, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/comments/${fileId}`);
+      const res = await axios.get(`${API_URL}/api/comments/${fileId}`);
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response.data);
+      return thunkAPI.rejectWithValue(err.response?.data || 'Failed to fetch comments');
     }
   }
 );
@@ -17,7 +19,7 @@ export const postComment = createAsyncThunk(
   'comments/postComment',
   async ({ text, commenter_email, commenter_name, file_id }, thunkAPI) => {
     try {
-      const res = await axios.post('/api/comments', {
+      const res = await axios.post(`${API_URL}/api/comments`, {
         text,
         commenter_email,
         commenter_name,
@@ -25,7 +27,7 @@ export const postComment = createAsyncThunk(
       });
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response.data);
+      return thunkAPI.rejectWithValue(err.response?.data || 'Failed to post comment');
     }
   }
 );
