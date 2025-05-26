@@ -28,7 +28,7 @@ function SharedFiles() {
         if (email) {
             dispatch(fetchAllShared(email));
         }
-    }, [email, dispatch]);
+    }, [ dispatch]);
 
     const handleOpenViewer = (file) => {
         setSelectedPdf(file.file_url);

@@ -87,7 +87,7 @@ function Home() {
             dispatch(fetchRecentShared(user.email));
             dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [user,dispatch]);
+    }, [dispatch]);
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },

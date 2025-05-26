@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const fetchAllShared = createAsyncThunk(
   'shared/fetchAllShared',
   async (email, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`/api/shared/sharedFiles/${email}`);
+      const res = await axios.get(`${BASE_URL}/api/shared/sharedFiles/${email}`);
 
       const bufferToUrl = (fileDataBufferObj, mimeType = 'application/pdf') => {
         const uint8Array = new Uint8Array(fileDataBufferObj.data);
@@ -31,7 +32,7 @@ export const fetchRecentShared = createAsyncThunk(
   'shared/fetchRecentShared',
   async (email, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`/api/shared/sharedFiles/${email}?limit=5`);
+      const res = await axios.get(`${BASE_URL}/api/shared/sharedFiles/${email}?limit=5`);
 
       const bufferToUrl = (fileDataBufferObj, mimeType = 'application/pdf') => {
         const uint8Array = new Uint8Array(fileDataBufferObj.data);
@@ -55,7 +56,7 @@ export const fetchRecentShared = createAsyncThunk(
 export const shareFileByLink = createAsyncThunk(
   'shared/shareFileByLink',
   async ({ fileId }) => {
-    const res = await axios.post('/api/shared/link', { fileId });
+    const res = await axios.post(`${BASE_URL}/api/shared/link`, { fileId });
     return res.data; 
   }
 );
@@ -63,7 +64,7 @@ export const shareFileByLink = createAsyncThunk(
 export const shareFileByEmail = createAsyncThunk(
   'shared/shareFileByEmail',
   async ({ file_id, user_name, user_email, role }) => {
-    const res = await axios.post('/api/shared/email', {
+    const res = await axios.post(`${BASE_URL}/api/shared/email `, {
       file_id,
       user_name,
       user_email,
@@ -76,7 +77,7 @@ export const shareFileByEmail = createAsyncThunk(
 export const getFileByLinkId = createAsyncThunk(
   'shared/getFileByLinkId',
   async (linkId) => {
-    const res = await axios.get(`/api/shared/link/${linkId}`);
+    const res = await axios.get(`${BASE_URL}/api/shared/link/${linkId}`);
     return res.data;
   }
 );

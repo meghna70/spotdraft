@@ -51,7 +51,7 @@ function MyFiles() {
         if (user) {
             dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [user, dispatch]);
+    }, [ dispatch]);
 
     const handleShareClick = (fileId) => {
         setShareFileId(fileId);

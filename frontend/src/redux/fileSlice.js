@@ -2,11 +2,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { formatBits } from '../utils/Size';
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 export const fetchFiles = createAsyncThunk(
   'files/fetchFiles',
   async ({ email, token }, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`/api/files/${email}`, {
+      const res = await  axios.get(`${BASE_URL}/api/files/${email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,7 +43,7 @@ export const uploadFile = createAsyncThunk(
       formData.append('type', metadata.type);
       formData.append('size', metadata.size);
 
-      const res = await axios.post('/api/files', formData, {
+      const res = await axios.post(`${BASE_URL}/api/files`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -58,7 +60,7 @@ export const deleteFile = createAsyncThunk(
   'files/deleteFile',
   async ({ id, token }, { rejectWithValue }) => {
     try {
-       await axios.delete(`/api/files/${id}`, {
+       await axios.delete(`${BASE_URL}/api/files/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
