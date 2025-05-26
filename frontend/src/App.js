@@ -49,7 +49,30 @@ const theme = createTheme({
   cssVariables: {
     colorSchemeSelector: 'data-toolpad-color-scheme',
   },
-  colorSchemes: { light: true, dark: true },
+  colorSchemes: {
+    light: {
+      palette: {
+        mode: 'light',
+        background: {
+          default: '#ffffff', 
+          paper: '#f2f2f2',
+        },
+      },
+    },
+    dark: {
+      palette: {
+        mode: 'dark',
+        background: {
+          default: '#00072d', 
+          paper: '#00072d',
+        },
+        text: {
+          primary: '#ffffff',
+          secondary: '#aaaaaa',
+        },
+      },
+    },
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -60,6 +83,13 @@ const theme = createTheme({
     },
   },
 });
+
+
+function EmptySidebarHeader() {
+  return <Box sx={{ height: 64 }} >
+    <Typography>Spotdraft</Typography>
+  </Box>;
+}
 
 function SidebarFooterAccount() {
   const user = useSelector((state) => state.user.user || JSON.parse(localStorage.getItem('user')));
@@ -168,8 +198,14 @@ function DashboardRenderer() {
   }
 
   return (
-    <AppProvider navigation={NAVIGATION} theme={theme}>
-      <DashboardLayout slots={{ sidebarFooter: SidebarFooterAccount }}>
+    <AppProvider
+      branding={{
+        // logo: <img src="https://mui.com/static/logo.png" alt="logo" />,
+        title: 'Spotdraft',
+        homeUrl: '/toolpad/core/introduction',
+      }}
+      navigation={NAVIGATION} theme={theme}>
+      <DashboardLayout slots={{ sidebarHeader: EmptySidebarHeader, sidebarFooter: SidebarFooterAccount }}>
         <PageComponent />
       </DashboardLayout>
     </AppProvider>
@@ -184,7 +220,7 @@ export default function App() {
           {/* Public routes */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path = '/forgotPassword' element={<ForgetPassword/>}/>          
+          <Route path='/forgotPassword' element={<ForgetPassword />} />
           <Route path="/*" element={<DashboardRenderer />} />
 
         </Routes>

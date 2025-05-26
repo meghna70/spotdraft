@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { formatBits } from '../utils/Size';
 
 export const fetchFiles = createAsyncThunk(
   'files/fetchFiles',
@@ -19,6 +20,7 @@ export const fetchFiles = createAsyncThunk(
 
       const filesWithUrls = res.data.map(file => ({
         ...file,
+        size: formatBits(file.size),
         file_url: bufferToUrl(file.file_data, file.file_type || 'application/pdf'),
       }));
       console.log("file with urls:", filesWithUrls)

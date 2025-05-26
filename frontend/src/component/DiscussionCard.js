@@ -40,7 +40,7 @@ export default function DiscussionCard(props) {
                 {/* FILE INFO */}
                 <Box>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography level="title-lg" sx={{ fontWeight: 'bold' }}>
+                        <Typography level="title-lg" sx={{ color:"#f2f2f2", fontWeight: 'bold' }}>
                             {props.filename}
                         </Typography>
                         <Typography level="body-sm">{props.size}</Typography>

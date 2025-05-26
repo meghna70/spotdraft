@@ -33,7 +33,6 @@ export default function StoragePercent() {
                     <CircularProgressbar value={percentage} text={`${percentage}%`} />
                 </Box>
 
-                {/* Labels below */}
                 <Box
                     sx={{
                         display: 'flex',
@@ -43,11 +42,11 @@ export default function StoragePercent() {
                     }}
                 >
                     <Box textAlign="center">
-                        <Typography level="body-sm">Used Space</Typography>
+                        <Typography level="body-sm">Shared files</Typography>
                         <Typography level="title-md" fontWeight="lg">25 MB</Typography>
                     </Box>
                     <Box textAlign="center">
-                        <Typography level="body-sm">Total Space</Typography>
+                        <Typography level="body-sm">Uploaded files</Typography>
                         <Typography level="title-md" fontWeight="lg">2 GB</Typography>
                     </Box>
                 </Box>
