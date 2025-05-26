@@ -16,5 +16,5 @@ This is a fullstack project built with:
 Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/fullstack-file-sharing.git
-cd fullstack-file-sharing
+git clone https://github.com/yourusername/spotdraft.git
+cd spotdraft
