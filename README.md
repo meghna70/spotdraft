@@ -77,7 +77,8 @@ README.txt     --> Project documentation and setup guide
 - Permissions management for shared files
 - Redux state management for authentication
 
-![image](https://github.com/user-attachments/assets/3de44ed9-7b03-46ca-833b-cc3eeaf09bff)
+![image](https://github.com/user-attachments/assets/d9b99738-7ed0-43aa-9631-ba3a7341aa7a)
+
 
 ------------------------------------------------------------
 ## API Endpoints Summary:
