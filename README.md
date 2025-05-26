@@ -9,27 +9,25 @@ This is a fullstack project built with:
 - **Rich Text**: TipTap editor
 - **File Sharing**: Email-based + public link sharing
 
----
 
 
 ------------------------------------------------------------
 ## Project Structure:
-------------------------------------------------------------
+
 /backend       --> Express API (Node.js)
 /frontend      --> React client with Redux
 README.txt     --> Project documentation and setup guide
 .env           --> Environment configuration file (not committed)
 
 ------------------------------------------------------------
-Requirements:
-------------------------------------------------------------
+## Requirements:
+
 - Node.js (v18+ recommended)
 - PostgreSQL Database
 - npm or yarn
 
 ------------------------------------------------------------
 ## 🚀 Getting Started
-------------------------------------------------------------
 
 1. Clone the repository:
 
@@ -70,8 +68,7 @@ Requirements:
      http://localhost:3000
 
 ------------------------------------------------------------
-Key Features:
-------------------------------------------------------------
+## Key Features:
 
 - User Authentication with JWT
 - File upload to PostgreSQL (stored as binary)
@@ -81,8 +78,7 @@ Key Features:
 - Redux state management for authentication
 
 ------------------------------------------------------------
-API Endpoints Summary:
-------------------------------------------------------------
+## API Endpoints Summary:
 
 POST   /api/auth/signup           - Register a new user
 POST   /api/auth/login            - Login and receive JWT
@@ -92,8 +88,8 @@ POST   /api/files/share           - Share a file via email/public link
 GET    /api/files/:id/download    - Download a specific file
 
 ------------------------------------------------------------
-Deployment Notes:
-------------------------------------------------------------
+## Deployment Notes:
+
 
 - Backend can be hosted on Railway (https://railway.app)
 - Frontend can be deployed on Netlify or Vercel
@@ -101,20 +97,18 @@ Deployment Notes:
 - Environment variables should be added in the dashboard of the host
 
 ------------------------------------------------------------
-Contributing:
-------------------------------------------------------------
+## Contributing:
 
 Pull requests are welcome. Open an issue to discuss any major changes
 beforehand. Contributions should follow consistent code style and logic.
 
 ------------------------------------------------------------
-License:
-------------------------------------------------------------
+## License:
 
 This project is licensed under the MIT License.
 
 ------------------------------------------------------------
-Author:
-------------------------------------------------------------
+## Author:
+
 
 Created by @meghna70
