@@ -23,8 +23,7 @@ Thumbs.db
 *.swp
 
 # Build output
-**/dist
-**/build
+
 **/.next
 
 # Coverage reports
