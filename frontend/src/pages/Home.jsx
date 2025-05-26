@@ -83,11 +83,12 @@ function Home() {
     };
 
     useEffect(() => {
-        if (user) {
-            dispatch(fetchRecentShared(user.email));
-            dispatch(fetchFiles({ email: user.email, token: user.token }));
+        if (user?.email && user?.token) {
+          dispatch(fetchRecentShared(user.email));
+          dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [dispatch]);
+      }, [dispatch, user.email, user.token]);
+      
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },

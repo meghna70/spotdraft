@@ -48,10 +48,10 @@ function MyFiles() {
     const [copySuccess, setCopySuccess] = useState(false);
     console.log(shareStatus, copySuccess)
     useEffect(() => {
-        if (user) {
+        if (user.email && user.token) {
             dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [ dispatch]);
+    }, [ user.token, user.email, dispatch]);
 
     const handleShareClick = (fileId) => {
         setShareFileId(fileId);

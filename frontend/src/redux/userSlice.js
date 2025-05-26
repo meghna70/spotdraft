@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api/users`; 
+const API_URL = process.env.REACT_APP_BACKEND_URL; 
 
 export const signUp = createAsyncThunk('user/signUp', async (userData, thunkAPI) => {
   try {
-    const res = await axios.post(`${API_URL}/signup`, userData);
+    const res = await axios.post(`${API_URL}/api/users/signup`, userData);
     return res.data.user;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error || 'Sign up failed');
@@ -14,7 +14,7 @@ export const signUp = createAsyncThunk('user/signUp', async (userData, thunkAPI)
 
 export const signIn = createAsyncThunk('user/signIn', async (credentials, thunkAPI) => {
   try {
-    const res = await axios.post(`${API_URL}/signin`, credentials);
+    const res = await axios.post(`${API_URL}/api/users/signin`, credentials);
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error || 'Sign in failed');
@@ -23,7 +23,7 @@ export const signIn = createAsyncThunk('user/signIn', async (credentials, thunkA
 
 export const newPassword = createAsyncThunk('user/newPassword', async (newCred, thunkAPI) => {
   try {
-    const res = await axios.put(`${API_URL}/newPassword`, newCred);
+    const res = await axios.put(`${API_URL}/api/users/newPassword`, newCred);
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error || 'Password reset failed');
@@ -32,7 +32,7 @@ export const newPassword = createAsyncThunk('user/newPassword', async (newCred, 
 
 export const sendOtp = createAsyncThunk('user/sendOtp', async (email, thunkAPI) => {
   try {
-    const res = await axios.post(`${API_URL}/sendotp`, { email });
+    const res = await axios.post(`${API_URL}/api/users/sendotp`, { email });
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Failed to send OTP');
@@ -43,7 +43,7 @@ export const verifyOtp = createAsyncThunk(
   'user/verifyOtp',
   async ({ email, otp }, thunkAPI) => {
     try {
-      const res = await axios.post(`${API_URL}/verifyotp`, { email, otp });
+      const res = await axios.post(`${API_URL}/api/users/verifyotp`, { email, otp });
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data?.message || 'OTP verification failed');
