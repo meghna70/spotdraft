@@ -58,7 +58,7 @@ export const deleteFile = createAsyncThunk(
   'files/deleteFile',
   async ({ id, token }, { rejectWithValue }) => {
     try {
-      const res = await axios.delete(`/api/files/${id}`, {
+       await axios.delete(`/api/files/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

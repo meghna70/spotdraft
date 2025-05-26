@@ -27,7 +27,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { logout } from './redux/userSlice';
 import { createTheme } from '@mui/material';
-import UploadFileModal from './component/UploadFileModal';
 import ForgetPassword from './pages/ForgotPassword';
 
 const NAVIGATION = [
@@ -168,7 +167,6 @@ function DashboardRenderer() {
   const user = reduxUser || JSON.parse(localStorage.getItem('user'));
 
   const location = useLocation();
-  const navigate = useNavigate();
 
   if (!user) {
     return <Navigate to="/signin" replace />;

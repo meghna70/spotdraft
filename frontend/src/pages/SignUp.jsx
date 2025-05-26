@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
+// import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import { Link as MuiLink } from '@mui/material';
@@ -17,7 +17,7 @@ import { styled } from '@mui/material/styles';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { signUp } from '../redux/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const CustomButton = styled(Button)(({ theme }) => ({
@@ -90,7 +90,7 @@ export default function SignUp(props) {
     const [nameError, setNameError] = React.useState(false);
     const [nameErrorMessage, setNameErrorMessage] = React.useState('');
     const dispatch = useDispatch();
-    const { loading, error, user } = useSelector((state) => state.user);
+    // const { loading, error, user } = useSelector((state) => state.user);
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();

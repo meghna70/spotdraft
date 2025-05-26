@@ -1,5 +1,5 @@
 // components/PdfViewerWithComments.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Typography, Button, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { postComment } from '../redux/commentSlice';

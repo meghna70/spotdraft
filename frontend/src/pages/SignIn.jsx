@@ -14,7 +14,7 @@ import { styled } from '@mui/material/styles';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { signIn } from '../redux/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const CustomButton = styled(Button)(({ theme }) => ({
@@ -80,7 +80,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 
 export default function SignIn() {
   const dispatch = useDispatch();
-  const { loading, error, user } = useSelector((state) => state.user);
+  // const { loading, error, user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const [email, setEmail] = React.useState('');

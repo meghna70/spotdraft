@@ -12,7 +12,7 @@ function Hello() {
             <div style={{ fontSize:"14px", color:"#5A5A5A"}}>It’s good to see you again.</div>
         </div>
         <div style={{ display:"flex",  flexDirection:"column", justifyContent:"space-between"}}>
-            <img  style={{ borderRadius:"25px"}} src={banner}/>
+            <img alt="banner" style={{ borderRadius:"25px"}} src={banner}/>
            
         </div>
     </div>

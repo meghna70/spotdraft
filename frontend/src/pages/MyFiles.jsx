@@ -6,13 +6,12 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box, Link, Typography, Tooltip } from '@mui/material';
-import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFile, fetchFiles } from '../redux/fileSlice';
 import { shareFileByEmail, shareFileByLink } from '../redux/sharedSlice';
-import { fetchComments, postComment } from '../redux/commentSlice';
+import { fetchComments } from '../redux/commentSlice';
 import { currentTime } from '../utils/Time';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -28,7 +27,6 @@ import ShareFileDialog from './ShareFileDialog';
 function MyFiles() {
     const dispatch = useDispatch();
     const { items, loading } = useSelector((state) => state.files);
-    const { items: comments, loading: commentsLoading } = useSelector((state) => state.comments);
 
     const user = JSON.parse(localStorage.getItem('user'));
     // const token =(localStorage.getItem('authToken'));
@@ -40,7 +38,7 @@ function MyFiles() {
 
     const [pdfModalOpen, setPdfModalOpen] = useState(false);
     const [currentPdfUrl, setCurrentPdfUrl] = useState('');
-    const [newComment, setNewComment] = useState('');
+
     const [commentingOnFileId, setCommentingOnFileId] = useState(null);
 
     const [shareDialogOpen, setShareDialogOpen] = useState(false);
@@ -48,12 +46,12 @@ function MyFiles() {
     const [shareEmail, setShareEmail] = useState('');
     const [shareStatus, setShareStatus] = useState(null);
     const [copySuccess, setCopySuccess] = useState(false);
-
+    console.log(shareStatus, copySuccess)
     useEffect(() => {
         if (user) {
             dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [dispatch]);
+    }, [user, dispatch]);
 
     const handleShareClick = (fileId) => {
         setShareFileId(fileId);

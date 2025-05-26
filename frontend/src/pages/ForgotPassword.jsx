@@ -63,7 +63,6 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 export default function ForgetPassword() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { loading, error, successMessage } = useSelector((state) => state.user);
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -214,6 +213,7 @@ const StepTwo = ({ otp, setOtp, email, setStep }) => {
                     <FormLabel>Check your email</FormLabel>
                     <MuiOtpInput value={otp} onChange={setOtp} />
                 </FormControl>
+                {errorMsg && <Typography color="error">{errorMsg}</Typography>}
                 <CustomButton type="submit" fullWidth variant="contained">
                 {loading ? 'Verifying...' : 'Verify Code'}
                 </CustomButton>

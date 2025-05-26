@@ -14,17 +14,18 @@ import DiscussionCard from '../component/DiscussionCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecentShared, shareFileByEmail, shareFileByLink } from '../redux/sharedSlice';
 import { fetchFiles } from '../redux/fileSlice';
-import { fetchComments, postComment } from '../redux/commentSlice';
+import { fetchComments } from '../redux/commentSlice';
 import dayjs from 'dayjs';
 import ShareFileDialog from './ShareFileDialog';
 import Dialog from '@mui/material/Dialog';
 import PdfViewerWithComments from './PdfViewerWithComments';
 
+
 function Home() {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
     const { items, loading } = useSelector((state) => state.shared);
-    const { items: ownItems, loading: loadingOwnItems } = useSelector((state) => state.files);
+    const { items: ownItems } = useSelector((state) => state.files);
 
     const [pdfModalOpen, setPdfModalOpen] = useState(false);
     const [currentPdfUrl, setCurrentPdfUrl] = useState('');
@@ -34,7 +35,7 @@ function Home() {
     const [shareStatus, setShareStatus] = useState(null);
     const [copySuccess, setCopySuccess] = useState(false);
     const [shareFileId, setShareFileId] = useState(null);
-
+    console.log(shareStatus, copySuccess)
     const handleShareClick = (fileId) => {
         setShareFileId(fileId);
         setShareEmail('');
@@ -86,7 +87,7 @@ function Home() {
             dispatch(fetchRecentShared(user.email));
             dispatch(fetchFiles({ email: user.email, token: user.token }));
         }
-    }, [dispatch]);
+    }, [user,dispatch]);
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },

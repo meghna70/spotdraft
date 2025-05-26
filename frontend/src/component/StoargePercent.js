@@ -2,7 +2,6 @@ import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
-import CircularProgress from '@mui/joy/CircularProgress';
 import Card from '@mui/joy/Card';
 import {
     CircularProgressbar,
